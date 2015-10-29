@@ -122,13 +122,13 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">First Name</label>
                             <div class="col-md-9">
-                                <form:input path="firstName" type="text" class="form-control" style="width:100%" placeholder="First Name" />
+                                <form:input path="firstName" type="text" class="form-control" pattern="[a-zA-Z]"style="width:100%" placeholder="First Name" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Last Name</label>
                             <div class="col-md-9">
-                                <form:input path = "lastName" type="text" class="form-control" style="width:100%" placeholder="LastName" />
+                                <form:input path = "lastName" type="text" class="form-control" pattern="[a zA Z]"style="width:100%" placeholder="LastName" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -146,7 +146,7 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Mobile Number</label>
                             <div class="col-md-9">
-                                <form:input type="text" path="mobile" class="form-control" style="width:100%" placeholder="Mobile Number" />
+                                <form:input type="text" path="mobile" class="form-control"oninvalid="this.setCustomValidity('numerics only')" style="width:100%" pattern="[0 9]" placeholder="Mobile Number" />
                             </div>
                         </div>
                         <div class="owner-address">
@@ -159,26 +159,26 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">City</label>
                                 <div class="col-md-9">
-                                    <form:input path="address.city" id="city" style="margin-top:10px" tabindex="11" />
+                                    <form:input path="address.city" id="city" oninvalid="this.setCustomValidity('alphabets only')"style="margin-top:10px" pattern="[a zA Z]" tabindex="11" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <form:hidden path="address.id" id="editownerid" />
                                 <label class="col-md-3 control-label">State</label>
                                 <div class="col-md-9">
-                                    <form:input path="address.state" id="state" style="margin-top:10px" tabindex="10" />
+                                    <form:input path="address.state" oninvalid="this.setCustomValidity('alphabets only')"id="state" pattern="[a zA Z]"style="margin-top:10px" tabindex="10" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Pincode</label>
                                 <div class="col-md-9" id="pincode">
-                                    <form:input path="address.pincode" id="pincode" class="form-control" style="width:100%" placeholder="eg. 301201"  />
+                                    <form:input path="address.pincode" id="pincode" oninvalid="this.setCustomValidity('numerics only')" pattern="[0 9]"class="form-control" style="width:100%" placeholder="eg. 301201"  />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Country</label>
                                 <div class="col-md-9" id="pincode">
-                                    <form:input path="address.country" id="country" class="form-control" style="width:100%" placeholder="Nation"  />
+                                    <form:input path="address.country" id="country" oninvalid="this.setCustomValidity('alhphabets only')" pattern="[a zA Z]"class="form-control" style="width:100%" placeholder="Nation"  />
                                 </div>
                                 <form:hidden path="address.latitude" id="lat"  />
                                 <form:hidden path="address.longitude" id="longt" />
@@ -237,7 +237,7 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Company</label>
                             <div class="col-md-9">
-                                <form:input type="text" id="companyName" path="companyName" class="form-control" style="width:100%" placeholder="Default input" />
+                                <form:input type="text" id="companyName" path="companyName" class="form-control" style="width:100%" pattern="[a-zA-Z0-9]" placeholder="Default input" />
                             </div>
                         </div>
 
@@ -250,22 +250,24 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Transport Reference</label>
                             <div class="col-md-9">
-                                <form:input type="text" id="trasnposrtReference" path="userReferanceCode" class="form-control" style="width:100%" placeholder="Default input" />
+                                <form:input  type="text" id="trasnposrtReference" path="userReferanceCode" class="form-control" style="width:100%" placeholder="Default input" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Number of Employees</label>
+                            <span class="error" id="noOfEmp"></span>
                             <div class="col-md-9">
-                                <form:input type="text" id="noOfEmp" path="noOfEmployee" class="form-control" style="width:100%" placeholder="If applicable" />
+                                <form:input type="text" oninvalid="this.setCustomValidity('numerics only')"   id="noOfEmp" path="noOfEmployee" class="form-control" pattern="[0-9]" style="width:100%" placeholder="If applicable" />
                             </div>
                         </div>
 
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Number of Trucks</label>
+                            <span class="error" id="noOfTrucks"></span>
                             <div class="col-md-9">
-                                <form:input type="text" id="noOfTrucks" path="noOfVehicles" class="form-control" style="width:100%" placeholder="If applicable" />
+                                <form:input  oninvalid="this.setCustomValidity('numerics only')" id="noOfTrucks" type="text" path="noOfVehicles" class="form-control" pattern="[0-9]" style="width:100%" placeholder="If applicable" />
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -316,7 +318,7 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Model No.</label>
                                     <div class="col-md-9">
-                                        <form:input id="modalNo" path="modelNo" class="form-control" style="width:60%" placeholder="Default input" />
+                                        <form:input id="modalNo" path="modelNo" class="form-control" style="width:60%"  placeholder="Default input" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -327,8 +329,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Number of Wheels</label>
+                                    <span class="error" id="noOfWheels"></span>
                                     <div class="col-md-9">
-                                        <form:input id="noOfWheels" path="noOfWheels" class="form-control" style="width:60%" placeholder="Default input" />
+                                        <form:input id="noOfWheels" oninvalid="this.setCustomValidity('numerics only')" path="noOfWheels" class="form-control" style="width:60%" pattern="[0-9]"placeholder="Default input" />
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-md-offset-8" style="background-color:white;left:25px;width:30%;padding-right:0%;margin-top:-34%">
@@ -355,14 +358,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Capacity</label>
+                                   <span class="error" id="capacity"></span>
                                     <div class="col-md-9">
-                                        <form:input id="capacity" path="capacity" class="form-control" style="width:100%" placeholder="Default input" />
+                                        <form:input id="capacity" path="capacity" class="form-control" style="width:100%" oninvalid="this.setCustomValidity('numerics only')" pattern="[0-9]" placeholder="Default input" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Weight</label>
+                                   <span class="error" id="weight"></span>
                                     <div class="col-md-9">
-                                        <form:input id="weight" path="weight" class="form-control" style="width:100%" placeholder="Default input" />
+                                        <form:input id="weight" path="weight" class="form-control" style="width:100%"oninvalid="this.setCustomValidity('numerics only')" pattern="[0-9]" placeholder="Default input" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -463,18 +468,20 @@
                             <div class="form-group">
                                 <form:hidden path="id" />
                                 <label class="col-md-3 control-label">First Name</label>
+                                <span class="error" id="driverFirstName"></span>
                                 <div class="col-md-9">
-                                    <form:input type="text" id="driverFirstName" path="firstName" class="form-control" style="width:60%" placeholder="Default input" />
+                                    <form:input type="text" id="driverFirstName" path="firstName" class="form-control" style="width:60%" oninvalid="this.setCustomValidity('first name should be alphabetic only')" pattern="[a-z A-Z]" placeholder="Default input" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Last Name</label>
+                               <span class="error" id="driverLastName"></span>
                                 <div class="col-md-9">
-                                    <form:input type="text" id="driverLastName" path="lastName" class="form-control" style="width:60%" placeholder="Default input" />
+                                    <form:input type="text" id="driverLastName" path="lastName" class="form-control" style="width:60%"oninvalid="this.setCustomValidity('last name should be alphabetic only')" pattern="[a-zA-Z]" placeholder="Default input" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-3 control-label">Lisance No.</label>
+                                <label class="col-md-3 control-label">License No.</label>
                                 <div class="col-md-9">
                                     <form:input type="text" id="lisenceNumber" path="licenseNo" class="form-control" style="width:60%" placeholder="Default input" />
                                 </div>
@@ -482,13 +489,13 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Mobile No.</label>
                                 <div class="col-md-9">
-                                    <form:input type="text" id="driverMobile" path="mobile" class="form-control"  style="width:60%" placeholder="Default input" onblur="getDriver(this);" />
+                                    <form:input oninvalid="this.setCustomValidity('numerics only')" type="text" id="driverMobile" path="mobile" class="form-control"  pattern="[0-9]" style="width:60%" placeholder="Default input" onblur="getDriver(this);" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Email No</label>
                                 <div class="col-md-9">
-                                    <form:input type="text" id="driverEmail"  path="email" class="form-control"  style="width:60%" placeholder="Default input" />
+                                    <form:input type="text" id="driverEmail"  path="email" class="form-control" pattern="[0-9a-zA-Z]" style="width:60%" placeholder="Default input" />
                                 </div>
                             </div>
                             <div class="col-md-2 col-md-offset-8" style="background-color:white;left:25px;width:30%;padding-right:0%;margin-top:-27%">
@@ -511,7 +518,7 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Service duration</label>
                                 <div class="col-md-9">
-                                    <form:input type="text" id="serviceDuration" path="serviceDuration" class="form-control" placeholder="In months" />
+                                    <form:input type="text" id="serviceDuration" path="serviceDuration" oninvalid="this.setCustomValidity('numerics only')" pattern="[0-9]"class="form-control" placeholder="In months" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -523,26 +530,26 @@
                             <div class="form-group">
                                 <label class="col-md-3 control-label">City</label>
                                 <div class="col-md-9">
-                                    <form:input path="address.city" id="citydriver" style="margin-top:10px" tabindex="10" />
+                                    <form:input path="address.city" id="citydriver" oninvalid="this.setCustomValidity('city name should be alphabetic')" pattern="[a-zA-Z]" style="margin-top:10px" tabindex="10" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <form:hidden path="address.id" id="editdriverid" />
                                 <label class="col-md-3 control-label">State</label>
                                 <div class="col-md-9">
-                                    <form:input path="address.state" id="statedriver"  style="margin-top:10px" tabindex="10" />
+                                    <form:input path="address.state" id="statedriver"  style="margin-top:10px" oninvalid="this.setCustomValidity('state name should be alphabetic')" pattern="[a-zA-Z]"tabindex="10" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Pincode</label>
                                 <div class="col-md-9">
-                                    <form:input path="address.pincode" id="pincodedriver" />
+                                    <form:input path="address.pincode" id="pincodedriver" oninvalid="this.setCustomValidity('numerics only')"pattern="[0-9]"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Country</label>
                                 <div class="col-md-9">
-                                    <form:input path="address.country" id="countrydriver"  style="margin-top:10px" tabindex="10" />
+                                    <form:input path="address.country" id="countrydriver"  style="margin-top:10px" oninvalid="this.setCustomValidity('alphabets  only')" pattern="[0-9a-zA-Z]" tabindex="10" />
                                 </div>
                                 <form:hidden path="address.latitude" id="latdriver" />
                                 <form:hidden path="address.longitude" id="longtdriver" />
@@ -714,25 +721,26 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">Material Type</label>
                         <div class="col-md-9">
-                            <input type="text" id="modalDialogGoodsMaterialType"class="form-control" style="width:60%"placeholder="Default input" />
+                            <input type="text" id="modalDialogGoodsMaterialType"class="form-control" pattern="[a-zA-Z]"style="width:60%"placeholder="Default input" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Weight</label>
+                        <span class="error" id="modalDialogGoodsWeight"></span>
                         <div class="col-md-9">
-                            <input type="text" id="modalDialogGoodsWeight"class="form-control" style="width:60%"placeholder="Default input" />
+                            <input type="text" id="modalDialogGoodsWeight"class="form-control"oninvalid="this.setCustomValidity('numerics only')" pattern="[0-9]"style="width:60%"placeholder="Default input" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Scheduled Date</label>
                         <div class="col-md-9">
-                            <input type="text" id="modalDialogGoodsScheduledDate"class="form-control" style="width:60%"placeholder="Default input" />
+                            <input type="text" id="modalDialogGoodsScheduledDate"class="form-control" style="width:60%"pattern="[a-zA-Z0-9]"placeholder="Default input" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Value</label>
                         <div class="col-md-9">
-                            <input type="text" id="modalDialogGoodsValue"class="form-control" style="width:60%"placeholder="In INR" />
+                            <input type="text" id="modalDialogGoodsValue"class="form-control" pattern="[a-zA-Z0-9]"style="width:60%"placeholder="In INR" />
                         </div>
                     </div>
                     <div class="col-md-2 col-md-offset-8" style="background-color:white;left:25px;width:30%;padding-right:0%;margin-top:-35%">
@@ -754,13 +762,13 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">From</label>
                         <div class="col-md-9">
-                            <input type="text" id="modalDialogGoodsFrom" class="form-control" style="width:100%"placeholder="Default input" />
+                            <input type="text" oninvalid="this.setCustomValidity=('alphabets only')" id="modalDialogGoodsFrom" class="form-control"pattern="[a-zA-Z]" style="width:100%"placeholder="Default input" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">To</label>
                         <div class="col-md-9">
-                            <input type="text" id="modalDialogGoodsTo"class="form-control" style="width:100%"placeholder="Default input" />
+                            <input type="text" oninvalid="this.setCustomValidity=('alphabets only')" id="modalDialogGoodsTo"class="form-control" pattern="[a-zA-Z]" style="width:100%"placeholder="Default input" />
                         </div>
                     </div>
                     <div class="form-group">
